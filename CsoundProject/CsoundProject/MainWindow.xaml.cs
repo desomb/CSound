@@ -23,19 +23,90 @@ namespace CsoundProject
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Button btn = new Button();
+
+
         public MainWindow()
         {
             InitializeComponent();
+            Example1();
         }
+
+        private void btn1_Click(object sender, RoutedEventArgs e)
+        {
+            // do something
+            Example1();
+
+            //btn.Background = Brushes.Blue;
+        }
+
+        //Debug.WriteLine("test");
+
         public void Example1()
         {
-            // Create an instance of the Csound object within a using block
+            Debug.WriteLine("test");
+            /*   using (var c = new Csound6Net())
+               {
+                   c.Compile(new string[] { "csoundqdt-temp.csd" });  // Compile a pre-defined test1.csd file, includes Start()
+                  // c.Perform();        // This call runs Csound to completion (saving Stop() for next example)
+               }*/
+
             using (var c = new Csound6Net())
             {
-                c.Compile(new string[] { "csoundqt-temp.csd" });  // Compile a pre-defined test1.csd file, includes Start()
-                c.Perform();        // This call runs Csound to completion (saving Stop() for next example)
-            }
-            //c.Dispose() shuts csound down properly. It is called automatically as a "using" block exits.
+                // Using SetOption() to configure Csound: here to output in realtime
+
+                c.CompileOrc(orc);       // Compile the Csound Orchestra string
+                c.ReadScore("i1 0 1\n");   // Compile the Csound score as a string constant
+
+                c.Start();  // When compiling from strings, Start() is needed before performing
+                c.Perform();// Run Csound to completion
+                c.Stop();   // At this point, Csound is already stopped, but this call is here
+            }               // as it is something that you would generally call in real-world 
+
         }
+
+        const string orc = @"
+sr=44100
+ksmps=32
+nchnls=2
+0dbfs=1
+instr 1 
+aout vco2 0.5, 440
+outs aout, aout
+endin";
+
+
+        //Used in example 5 and 6
+        const string orc2 = @"
+sr=44100
+ksmps=32
+nchnls=2
+0dbfs=1
+instr 1 
+ipch = cps2pch(p5, 12)
+kenv linsegr 0, .05, 1, .05, .7, .4, 0
+aout vco2 p4 * kenv, ipch 
+aout moogladder aout, 2000, 0.25
+outs aout, aout
+endin
+";
+
+
+        // Used in examples 7, 8 and 9
+        const string orc3 = @"
+sr=44100
+ksmps=32
+nchnls=2
+0dbfs=1
+instr 1 
+kamp chnget ""amp""
+kfreq chnget ""freq""
+printk 0.5, kamp
+printk 0.5, kfreq
+aout vco2 kamp, kfreq
+aout moogladder aout, 2000, 0.25
+outs aout, aout
+endin";
+
     }
 }

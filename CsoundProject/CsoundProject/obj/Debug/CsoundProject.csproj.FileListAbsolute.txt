@@ -14,3 +14,5 @@ C:\Users\desomb_v\Documents\Visual Studio 2015\Projects\CSound\CsoundProject\Cso
 C:\Users\desomb_v\Documents\Visual Studio 2015\Projects\CSound\CsoundProject\CsoundProject\obj\Debug\CsoundProject.csproj.GenerateResource.Cache
 C:\Users\desomb_v\Documents\Visual Studio 2015\Projects\CSound\CsoundProject\CsoundProject\obj\Debug\CsoundProject.exe
 C:\Users\desomb_v\Documents\Visual Studio 2015\Projects\CSound\CsoundProject\CsoundProject\obj\Debug\CsoundProject.pdb
+C:\Users\desomb_v\Documents\Visual Studio 2015\Projects\CSound\CsoundProject\CsoundProject\bin\Debug\Csound6Net.exe
+C:\Users\desomb_v\Documents\Visual Studio 2015\Projects\CSound\CsoundProject\CsoundProject\bin\Debug\Csound6Net.pdb
