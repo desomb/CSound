@@ -74,39 +74,5 @@ instr 1
 aout vco2 0.5, 440
 outs aout, aout
 endin";
-
-
-        //Used in example 5 and 6
-        const string orc2 = @"
-sr=44100
-ksmps=32
-nchnls=2
-0dbfs=1
-instr 1 
-ipch = cps2pch(p5, 12)
-kenv linsegr 0, .05, 1, .05, .7, .4, 0
-aout vco2 p4 * kenv, ipch 
-aout moogladder aout, 2000, 0.25
-outs aout, aout
-endin
-";
-
-
-        // Used in examples 7, 8 and 9
-        const string orc3 = @"
-sr=44100
-ksmps=32
-nchnls=2
-0dbfs=1
-instr 1 
-kamp chnget ""amp""
-kfreq chnget ""freq""
-printk 0.5, kamp
-printk 0.5, kfreq
-aout vco2 kamp, kfreq
-aout moogladder aout, 2000, 0.25
-outs aout, aout
-endin";
-
     }
 }
