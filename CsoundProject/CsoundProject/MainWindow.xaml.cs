@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using csound6netlib;
+using System.Diagnostics;
+
 namespace CsoundProject
 {
     /// <summary>
@@ -23,6 +26,16 @@ namespace CsoundProject
         public MainWindow()
         {
             InitializeComponent();
+        }
+        public void Example1()
+        {
+            // Create an instance of the Csound object within a using block
+            using (var c = new Csound6Net())
+            {
+                c.Compile(new string[] { "csoundqt-temp.csd" });  // Compile a pre-defined test1.csd file, includes Start()
+                c.Perform();        // This call runs Csound to completion (saving Stop() for next example)
+            }
+            //c.Dispose() shuts csound down properly. It is called automatically as a "using" block exits.
         }
     }
 }
