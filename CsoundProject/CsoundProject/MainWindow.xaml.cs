@@ -40,6 +40,26 @@ namespace CsoundProject
             //btn.Background = Brushes.Blue;
         }
 
+        private void btn2_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+            // Set filter for file extension and default file extension
+            dlg.DefaultExt = ".txt";
+            dlg.Filter = "Text documents (.txt)|*.txt";
+
+            // Display OpenFileDialog by calling ShowDialog method
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Get the selected file name and display in a TextBox
+            if (result == true)
+            {
+                // Open document
+                string filename = dlg.FileName;
+                FileNameTextBox.Text = filename;
+            }
+        }
+
         //Debug.WriteLine("test");
 
         public void Example1()
