@@ -63,18 +63,22 @@ endin";
         /// </summary>
         public void Browse()
         {
-            using (var c = new Csound6Net())
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+            // Set filter for file extension and default file extension
+            dlg.DefaultExt = ".txt";
+            dlg.Filter = "Text documents (.txt)|*.txt";
+
+            // Display OpenFileDialog by calling ShowDialog method
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Get the selected file name and display in a TextBox
+            if (result == true)
             {
-                //Using SetOption() to configure Csound: here to output in realtime
-
-                c.CompileOrc(orc);       // Compile the Csound Orchestra string
-                c.ReadScore("i1 0 1\n");   // Compile the Csound score as a string constant
-
-                c.Start();  // When compiling from strings, Start() is needed before performing
-                c.Perform();// Run Csound to completion
-                c.Stop();   // At this point, Csound is already stopped, but this call is here
-            }               // as it is something that you would generally call in real-world 
-
+                // Open document
+                string filename = dlg.FileName;
+                this.ChampsRecherche = filename;
+            }
         }
 
         /// <summary>
@@ -113,22 +117,17 @@ endin";
         /// </summary>
         public void CreateWav()
         {
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-
-            // Set filter for file extension and default file extension
-            dlg.DefaultExt = ".txt";
-            dlg.Filter = "Text documents (.txt)|*.txt";
-
-            // Display OpenFileDialog by calling ShowDialog method
-            Nullable<bool> result = dlg.ShowDialog();
-
-            // Get the selected file name and display in a TextBox
-            if (result == true)
+            using (var c = new Csound6Net())
             {
-                // Open document
-                string filename = dlg.FileName;
-                this.ChampsRecherche = filename;
-            }
+                //Using SetOption() to configure Csound: here to output in realtime
+
+                c.CompileOrc(orc);       // Compile the Csound Orchestra string
+                c.ReadScore("i1 0 1\n");   // Compile the Csound score as a string constant
+
+                c.Start();  // When compiling from strings, Start() is needed before performing
+                c.Perform();// Run Csound to completion
+                c.Stop();   // At this point, Csound is already stopped, but this call is here
+            }               // as it is something that you would generally call in real-world 
         }
 
         /// <summary>
