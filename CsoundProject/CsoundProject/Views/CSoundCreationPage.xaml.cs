@@ -13,19 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using System.Diagnostics;
-
-namespace CsoundProject
+namespace CsoundProject.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logique d'interaction pour CSoundCreationPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CSoundCreationPage : Page
     {
-        public Button btn = new Button();
-
-
-        public MainWindow()
+        public CSoundCreationPage()
         {
             InitializeComponent();
         }
