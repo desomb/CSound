@@ -11,6 +11,19 @@
       Background="White">
 
     <Grid>
-        
+        <TextBlock HorizontalAlignment="Center" 
+            Margin="180,20,165,0" 
+            Text="Creation" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Height="40" 
+            Width="280" 
+            FontFamily="Showcard Gothic" 
+            TextAlignment="Center" 
+            FontSize="36"/>
+        <TextBox HorizontalAlignment="Left" Height="208" Margin="40,117,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="270"/>
+        <TextBox HorizontalAlignment="Left" Height="133" Margin="370,117,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="230"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="450,290,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
     </Grid>
 </Page>

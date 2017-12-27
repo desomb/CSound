@@ -9,6 +9,9 @@
       Height="350" 
       Width="625"
       Background="White">
+    <Page.Resources>
+
+    </Page.Resources>
 
     <Grid>
         <TextBlock HorizontalAlignment="Center" 
